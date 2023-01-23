@@ -39,7 +39,7 @@ public class Bucket {
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
-	
-	
-	
+
+
+
 }

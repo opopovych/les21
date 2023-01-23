@@ -67,6 +67,6 @@ public class Product {
 		return "Product [id=" + id + ", name=" + name + ", image=" + image + ", description=" + description + ", price="
 				+ price + "]";
 	}
-	
-	
+
+
 }
