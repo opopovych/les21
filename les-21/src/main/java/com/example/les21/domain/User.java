@@ -1,15 +1,22 @@
 package com.example.les21.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-
+import jakarta.persistence.JoinColumn;
 @Entity
-@Table
+@Table(name = "users")
 public class User {
-
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -17,23 +24,32 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private String userRole;
-	public User(Long id, String firstName, String lastName, String email, String password, String userRole) {
+	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinTable(
+            name="users_roles",
+            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
+	private List<Role> roles = new ArrayList<>();
+	
+	
+	
+	public User() {
+		super();
+	}
+	public User(Long id, String firstName, String lastName, String email, String password, List<Role> roles) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.userRole = userRole;
+		this.roles = roles;
 	}
-	public User(String firstName, String lastName, String email, String password, String userRole) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.userRole = userRole;
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 	public Long getId() {
 		return id;
@@ -65,17 +81,8 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUserRole() {
-		return userRole;
-	}
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
-	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", userRole=" + userRole + "]";
-	}
+
+	
 	
 	
 	
