@@ -3,6 +3,9 @@ package com.example.les21.security;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,8 +16,10 @@ import com.example.les21.daoRepo.UserRepo;
 import com.example.les21.domain.Role;
 import com.example.les21.domain.User;
 
+@Configuration
+@EnableWebSecurity
 public class CustomUserDetailService implements UserDetailsService {
-
+	@Autowired
 	private UserRepo userRepo;
 
 	public CustomUserDetailService(UserRepo userRepo) {
