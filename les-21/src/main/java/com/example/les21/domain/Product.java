@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,9 +15,14 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
+	@Lob
 	private String image;
 	private String description;
 	private Double price;
+	
+	public Product() {
+		super();
+	}
 	public Product(Long id, String name, String image, String description, Double price) {
 		super();
 		this.id = id;

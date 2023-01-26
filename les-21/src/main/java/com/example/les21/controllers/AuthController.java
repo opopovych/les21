@@ -9,18 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.les21.domain.Product;
 import com.example.les21.domain.User;
+import com.example.les21.service.ProductService;
 import com.example.les21.service.UserService;
 
 @Controller
 public class AuthController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ProductService productService;
 
 	@GetMapping("/index")
-	public String home() {
+	public String home(Model model) {
+		Iterable<Product> products = productService.listOfProducts();
+		model.addAttribute("products", products);
 		return "index";
 	}
+	
 	@GetMapping("/register")
 	public String showRegisterForm(Model model) {
 		User user = new User();

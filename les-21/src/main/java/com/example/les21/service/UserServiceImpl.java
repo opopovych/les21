@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepo userRepo;
 	private RoleRepo roleRepo;
 	private PasswordEncoder passwordEncoder;
+	
 
 	public UserServiceImpl(UserRepo userRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
 		super();
