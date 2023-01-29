@@ -51,33 +51,29 @@
 				<table class="table table-image">
 					<thead>
 						<tr>
+
 							<th scope="col">Id</th>
-							<th scope="col">Image</th>
-							<th scope="col">name</th>
-							<th scope="col">description</th>
-							<th scope="col">price</th>
-							<th scope="col">action</th>
+							<th scope="col">Product Name</th>
+							<th scope="col">Product Image</th>
+							<th scope="col">Product Description</th>
+							<th scope="col">Price</th>
+							<th scope="col">ordered by</th>
+							<th scope="col">Action</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="products : ${products}">
-							<td th:text=${products.id}></td>
+						<tr th:each="bucket : ${bucket}">
+							<td th:text=${bucket.id}></td>
+							<td th:text=${bucket.product.name}></td>
 							<td scope="row"><img
-								th:src="*{'data:image/jpeg;base64,'+{products.image}}"
+								th:src="*{'data:image/jpeg;base64,'+{bucket.product.image}}"
 								style="width: 100px; height: 100px;"></td>
-							<td th:text=${products.name}></td>
-							<td th:text=${products.description}></td>
-							<td th:text=${products.price}></td>
-							<td>
-								<form th:action="@{/bucket}" method="post">
-									<input type="hidden" class="form-control"
-										th:value = "${products.id}" name = "id">
+							<td th:text=${bucket.product.description}></td>
+							<td th:text=${bucket.product.price}></td>
+							<td th:text=${bucket.user.firstName}></td>
+							<td><a th:href="${bucket.id}+'/delete'">delete</a></td>
 
-									<button type="submit" class="btn btn-default">Add to
-										Bucket</button>
-								</form>
-							</td>
 						</tr>
 
 					</tbody>

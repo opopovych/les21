@@ -19,4 +19,8 @@ public class ProductService {
 	public Iterable<Product> listOfProducts() {
 		return productRepo.findAll();
 	}
+	public Product findById(Long id) {
+	return	productRepo.findById(id).get();
+		
+	}
 }
