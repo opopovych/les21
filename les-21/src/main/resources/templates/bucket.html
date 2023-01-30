@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf/extras/springsecurity"
+	lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +16,7 @@
 <body>
 
 	<!-- Sidebar -->
+
 	<div class="w3-sidebar w3-bar-block w3-border-right "
 		style="display: none" id="mySidebar">
 		<button onclick="w3_close()" class="w3-bar-item w3-large">Close
@@ -25,6 +28,7 @@
 			<input type="submit" value="Sign Out" />
 		</form>
 	</div>
+
 
 	<!-- Page Content -->
 	<div class="w3-teal">

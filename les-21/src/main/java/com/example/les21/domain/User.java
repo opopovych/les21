@@ -24,6 +24,7 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
             name="users_roles",
@@ -34,6 +35,8 @@ public class User {
 
 
 
+	
+	
 	public User() {
 		super();
 	}

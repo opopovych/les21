@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
 	private RoleRepo roleRepo;
 	private PasswordEncoder passwordEncoder;
 	
+	
 
 	public UserServiceImpl(UserRepo userRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
 		super();
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
 		user1.setLastName(user.getLastName());
 		user1.setEmail(user.getEmail());
 		user1.setPassword(passwordEncoder.encode(user.getPassword()));
-		Role role = roleRepo.findByName("ROLE_ADMIN");
+		Role role = roleRepo.findByName("");
 		if (role == null) {
 			role = checkRoleExist();
 		}
