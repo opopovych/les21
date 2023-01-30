@@ -2,6 +2,9 @@ package com.example.les21.service;
 
 import java.util.Arrays;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,9 @@ import com.example.les21.domain.Role;
 import com.example.les21.domain.User;
 @Service
 public class UserServiceImpl implements UserService {
+	
+	Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+	@Autowired
 	private UserRepo userRepo;
 	private RoleRepo roleRepo;
 	private PasswordEncoder passwordEncoder;
@@ -25,6 +31,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void saveUser(User user) {
+		logger.info("Create new user");
 		User user1 = new User();
 		user1.setFirstName(user.getFirstName());
 		user1.setLastName(user.getLastName());
@@ -40,11 +47,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findUserByEmail(String email) {
-
+logger.info("Get user by email - " + email);
 		return userRepo.findByEmail(email);
 	}
 
 	private Role checkRoleExist() {
+		
 		Role role = new Role();
 		role.setName("ROLE_ADMIN");
 		roleRepo.save(role);
