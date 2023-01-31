@@ -19,35 +19,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<!-- Sidebar -->
 
-	<div class="w3-sidebar w3-bar-block w3-border-right"
-		style="display: none" id="mySidebar">
-		<button onclick="w3_close()" class="w3-bar-item w3-large">Close
-			&times;</button>
-		<a href="index" class="w3-bar-item w3-button">Home Page</a> <a
-			href="createProduct" class="w3-bar-item w3-button">Create Product</a>
-
-		<a href="bucket" class="w3-bar-item w3-button">Bucket</a>
-
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" />
-		</form>
-	</div>
+	<div class = "mb-auto" th:insert="sidebar.html :: sidebar"></div>
 
 
-	<!-- Page Content -->
-	<div class="w3-teal">
-		<button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
-		<div class="w3-container">
-			<h1>Shop</h1>
-		</div>
-	</div>
-
-
-
-
-	<form action="/createProduct" method="POST"
+	<form action="/createProduct" method="POST" class="ml-2"
 		enctype="multipart/form-data">
 		<div class="form-group row">
 			<label for="image" class="col-sm-2 col-form-label">Image</label>
