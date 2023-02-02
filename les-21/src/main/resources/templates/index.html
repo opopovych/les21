@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>Home page</title>
+<title th:text = "#{lang.homePage}"></title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<div class = "mb-auto" th:insert="sidebar :: sidebar"></div>
+	<div class = "mb-auto" th:insert="sidebar.html :: sidebar"></div>
 
 
 
@@ -23,12 +23,12 @@
 				<table class="table table-image">
 					<thead>
 						<tr>
-							<th scope="col">Id</th>
-							<th scope="col">Image</th>
-							<th scope="col">name</th>
-							<th scope="col">description</th>
-							<th scope="col">price</th>
-							<th scope="col">action</th>
+							<th scope="col" th:text = "#{lang.id}"></th>
+							<th scope="col" th:text = "#{lang.image}"></th>
+							<th scope="col" th:text = "#{lang.name}"></th>
+							<th scope="col" th:text = "#{lang.description}"></th>
+							<th scope="col" th:text = "#{lang.price}"></th>
+							<th scope="col" th:text = "#{lang.action}"></th>
 
 						</tr>
 					</thead>
@@ -46,8 +46,7 @@
 									<input type="hidden" class="form-control"
 										th:value = "${products.id}" name = "id">
 
-									<button type="submit" class="btn btn-default">Add to
-										Bucket</button>
+									<button type="submit" class="btn btn-default" th:text = "#{lang.addToBucket}"></button>
 								</form>
 							</td>
 						</tr>

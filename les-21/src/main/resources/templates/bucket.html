@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<title>Home page</title>
+<title th:text = "#{lang.bucket}"></title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -24,13 +24,15 @@
 					<thead>
 						<tr>
 
-							<th scope="col">Id</th>
-							<th scope="col">Product Name</th>
-							<th scope="col">Product Image</th>
-							<th scope="col">Product Description</th>
-							<th scope="col">Price</th>
-							<th scope="col">ordered by</th>
-							<th scope="col">Action</th>
+							<th scope="col" th:text = "#{lang.id}"></th>
+							<th scope="col" th:text = "#{lang.image}"></th>
+							<th scope="col" th:text = "#{lang.name}"></th>
+							<th scope="col" th:text = "#{lang.description}"></th>
+							<th scope="col" th:text = "#{lang.price}"></th>
+							<th scope="col" th:text = "#{lang.orderedBy}"></th>
+							<th scope="col" th:text = "#{lang.action}"></th>
+							
+							
 
 						</tr>
 					</thead>
@@ -44,7 +46,7 @@
 							<td th:text=${bucket.product.description}></td>
 							<td th:text=${bucket.product.price}></td>
 							<td th:text=${bucket.user.firstName}></td>
-							<td><a th:href="${bucket.id}+'/delete'">delete</a></td>
+							<td><a th:href="${bucket.id}+'/delete'" th:text = "#{lang.actionDelete}"></a></td>
 
 						</tr>
 

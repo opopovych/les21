@@ -1,17 +1,27 @@
 <div th:fragment="sidebar">
+ 
 	<!-- Sidebar -->
 
 	<div class="w3-sidebar w3-bar-block w3-border-right "
 		style="display: none" id="mySidebar">
-		<button onclick="w3_close()" class="w3-bar-item w3-large">Close
+		<button onclick="w3_close()" class="w3-bar-item w3-large" th:text = "#{lang.close}">
 			&times;</button>
-		<a href="/index" class="w3-bar-item w3-button">Home Page</a> <a
-			href="/createProduct" class="w3-bar-item w3-button">Create
-			Product</a> <a href="bucket" class="w3-bar-item w3-button">Bucket</a>
+		<a href="/index" class="w3-bar-item w3-button" th:text="#{lang.homePage}"></a> <a
+			href="/createProduct" class="w3-bar-item w3-button" th:text="#{lang.createProduct}"></a>
+			 <a href="bucket" class="w3-bar-item w3-button" th:text="#{lang.bucket}"></a>
 		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" />
+			<input type="submit" th:value = "#{lang.signOut}" />
 		</form>
+		<span th:text="#{lang.change}"></span>:
+		<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{lang.en}"></option>
+    <option value="ua" th:text="#{lang.uk}"></option>
+</select>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+
 
 
 	<!-- Page Content -->
@@ -31,6 +41,15 @@
 			document.getElementById("mySidebar").style.display = "none";
 		}
 	</script>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#locales").change(function () {
+        var selectedOption = $('#locales').val();
+        if (selectedOption != ''){
+            window.location.replace('?lang=' + selectedOption);
+        }
+    });
+});
+</script>
 
 </div>
